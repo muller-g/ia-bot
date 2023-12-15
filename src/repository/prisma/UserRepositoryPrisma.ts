@@ -1,5 +1,6 @@
 import {PrismaClient} from "@prisma/client";
 import User from "../../domain/entity/User";
+import bcrypt from "bcrypt";
 
 export default class UserRepositoryPrisma {
 
@@ -19,5 +20,19 @@ export default class UserRepositoryPrisma {
         });
 
         return createdUser;
+    }
+
+    async loginUser(email: string, password: string): Promise<User | undefined> {
+        const user: any = await this.prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        });
+
+        if(!await bcrypt.compare(password, user.password)){
+            return undefined
+        }
+
+        return user;
     }
 }
