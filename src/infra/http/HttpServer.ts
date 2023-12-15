@@ -27,7 +27,13 @@ export default class HttpServer {
     private handler(handler: Function) {
         return async function (req: any, res: any) {
             try {
-                res.status(res.status).send(res.body);
+                const result = await handler(req.params, req);
+
+                if (result.status && result.body) {
+                    res.status(result.status).send(result.body);
+                } else {
+                    res.send(result);
+                }
             } catch (error: any) {
                 logger.error("Error handler:", error);
                 if (error instanceof Error) {

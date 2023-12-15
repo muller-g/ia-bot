@@ -8,8 +8,7 @@ export default class User {
         readonly name: string,
         readonly email: string,
         readonly phone: string,
-        readonly profile_image: string | undefined,
-        readonly type: string,
+        readonly profile_image: string,
         readonly password: string
     ) {
         this.id = id;
@@ -20,7 +19,6 @@ export default class User {
         email: string,
         phone: string,
         profile_image: string,
-        type: string,
         password: string,
         id?: string
     ): Promise<User> {
@@ -32,7 +30,6 @@ export default class User {
             email,
             phone,
             profile_image,
-            type,
             crypted
         );
     }

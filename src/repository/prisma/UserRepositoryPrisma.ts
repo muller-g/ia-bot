@@ -14,7 +14,6 @@ export default class UserRepositoryPrisma {
                 email: user.email,
                 phone: user.phone,
                 profile_image: user.profile_image,
-                type: user.type,
                 password: user.password
             }
         });
