@@ -45,6 +45,6 @@ export default class IAService {
         const result = await chat.sendMessage(prompt);
         const response = result.response;
 
-        return response.text();
+        return response.text().replace(/\*\*([^*]+)\*\*/g, '*$1*');
     }
 }
