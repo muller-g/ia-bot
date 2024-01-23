@@ -9,7 +9,7 @@ export default class IAService {
     static async generatePrompt(text: string){
         const prompt: string = text;
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-        console.log(prompt)
+
         const generationConfig = {
             temperature: 0.9,
             topK: 1,

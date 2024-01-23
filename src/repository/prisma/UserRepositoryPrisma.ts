@@ -18,14 +18,4 @@ export default class UserRepositoryPrisma {
 
         return createdUser;
     }
-
-    async loginUser(email: string, password: string): Promise<User | undefined> {
-        const user: any = await this.prisma.user.findUnique({
-            where: {
-                email: email
-            }
-        });
-
-        return user;
-    }
 }
