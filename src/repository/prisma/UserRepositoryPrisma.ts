@@ -1,6 +1,5 @@
 import {PrismaClient} from "@prisma/client";
 import User from "../../domain/entity/User";
-import bcrypt from "bcrypt";
 
 export default class UserRepositoryPrisma {
 
@@ -13,9 +12,7 @@ export default class UserRepositoryPrisma {
                 id: user.id,
                 name: user.name,
                 email: user.email,
-                phone: user.phone,
-                profile_image: user.profile_image,
-                password: user.password
+                phone: user.phone
             }
         });
 
@@ -28,10 +25,6 @@ export default class UserRepositoryPrisma {
                 email: email
             }
         });
-
-        if(!await bcrypt.compare(password, user.password)){
-            return undefined
-        }
 
         return user;
     }

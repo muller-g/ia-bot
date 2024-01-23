@@ -6,7 +6,7 @@ const loggerFile = createLogger({
         format.json()
     ),
     transports: [
-        new transports.Console()
+        new transports.File({ filename: 'error.log' }),
     ],
 });
 
